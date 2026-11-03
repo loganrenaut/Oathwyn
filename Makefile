@@ -24,10 +24,10 @@ $(BUILD_DIR)/main.o: src/main.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(SDL_CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/world.o: src/world.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -MMD -MP -MF $(BUILD_DIR)/world.d -c $< -o $@
 
 $(BUILD_DIR)/test_world.o: tests/test_world.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -MMD -MP -MF $(BUILD_DIR)/test_world.d -c $< -o $@
 
 $(BUILD_DIR)/oathwyn: $(GAME_OBJECTS)
 	$(CC) $^ $(SDL_LIBS) -o $@
@@ -40,3 +40,5 @@ test: $(BUILD_DIR)/test_world
 
 clean:
 	rm -rf $(BUILD_DIR)
+
+-include $(BUILD_DIR)/world.d $(BUILD_DIR)/test_world.d
