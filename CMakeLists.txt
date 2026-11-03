@@ -10,7 +10,10 @@ find_package(SDL3 REQUIRED CONFIG)
 
 add_executable(oathwyn
     src/main.c
+    src/world.c
 )
+
+target_include_directories(oathwyn PRIVATE include)
 
 target_link_libraries(oathwyn
     PRIVATE SDL3::SDL3
