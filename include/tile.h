@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 
+/* Depenency tracking verification */
 typedef enum {
     TERRAIN_GROUND,
     TERRAIN_GRASS,
