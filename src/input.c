@@ -1,4 +1,5 @@
 #include "input.h"
+#include <math.h>
 
 GameInput input_consume(InputState *state) {
 
@@ -37,6 +38,27 @@ GameInput input_consume(InputState *state) {
     {
         input.move_y = 1.00f;
     }
+
+// Normalize diagonal movement to prevent increased movement speed
+    if (input.move_x != 0.0f && input.move_y != 0.0f) {
+
+        float magnitude = sqrtf(
+            (input.move_x * input.move_x) + 
+            (input.move_y * input.move_y)
+        );
+        
+        input.move_x /= magnitude;
+        input.move_y /= magnitude;
+    }
+
+    input.jump_held = state->jump_held;
+    input.jump_pressed = state->jump_pending;
+
+    input.interact_pressed = state->interact_pending;
+    input.interact_held = state->interact_held;
+
+    state->jump_pending = false;
+    state->interact_pending = false;
 
     return input;
 }

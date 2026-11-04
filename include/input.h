@@ -7,10 +7,10 @@ typedef struct {
     float move_x;
     float move_y;
 
-    bool jump;              //New pressed event
+    bool jump_pressed;              //New pressed event
     bool jump_held;         //Currently held
 
-    bool interact;          //New pressed event
+    bool interact_pressed;          //New pressed event
     bool interact_held;     //Currently held
 } GameInput;
 
