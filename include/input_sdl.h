@@ -3,6 +3,6 @@
 
 #include "input.h"
 
-void input_sdl_update(InputState *state);
+void input_sdl_process_event(InputState *state, const SDL_Event *event);
 
 #endif

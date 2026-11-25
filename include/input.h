@@ -8,10 +8,10 @@ typedef struct {
     float move_y;
 
     bool jump_pressed;              //New pressed event
-    bool jump_held;         //Currently held
+    bool jump_held;                 //Currently held
 
     bool interact_pressed;          //New pressed event
-    bool interact_held;     //Currently held
+    bool interact_held;             //Currently held
 } GameInput;
 
 typedef struct {
